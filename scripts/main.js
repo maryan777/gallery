@@ -18,9 +18,9 @@
 //     // 'https://picsum.photos/300/150?random=3',
 // ];
 
-function displayPhotos(photos)    {
+function displayPhotos(photos) {
     console.log('displayPhotos()')
-    
+
 
     // renderPhoto(photos[0]);
     // renderPhoto(photos[1]);
@@ -50,18 +50,18 @@ function displayPhotos(photos)    {
 
 const ONE_SECOND = 1000
 
-function renderPhoto( url )  {
+function renderPhoto(url) {
     console.log(url);
     const $photo = document.createElement('img');
     $photo.src = url;
     const $main = document.querySelector('main');
     $main.appendChild($photo);
 }
-function displayMessage( alertOutside, outsideClass ){
+function displayMessage(alertOutside, outsideClass) {
     const $text = document.createElement('p')
     $text.textContent = alertOutside;
     $text.classList.add('alert', outsideClass)
-;
+        ;
     const $main = document.querySelector('main')
     $main.appendChild($text);
 }
@@ -71,38 +71,86 @@ function displayMessage( alertOutside, outsideClass ){
 
 //    const start = Date.now();
 //    while (Date.now() > start + delay)   {}
-            
+
 //         console.log(i+1);
 //     }
 
 
+// function fetchPhotosByXHR() {
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('GET', url);
+
+//     xhr.addEventListener('load', function () {
+
+//     });
+//     xhr.send();
+
+// }
+
+function fetchPhotos(url)   {
+        console.log('fetchPhotos()');
+        const options = {
+            headers: new Headers({
+                "x-ciasteczko": 'sernik'
+            })
+        };
+       fetch(url, options)
+        .then(function (result)   {
+            console.log ('udalo sie');
+            return result.json();;
+
+        }) 
+        .then(function(result)  {
+            console.log (result);
+            const urls = [];
+            result.forEach(function (photo) {
+                urls.push( photo.imageUrl );
+            });
+            displayPhotos(urls);
+        }
+        )
+        .catch(function ()  {
+            console.log ('nie udalo sie')
+        });
+}
+
 function main() {
     console.log('main()');
 
+const photosUrl = 'https://fakes.herokuapp.com/photos';
+
+    fetchPhotos(photosUrl);
+
     const photos = [
-        'https://picsum.photos/300/150?random=1',
-        'https://picsum.photos/300/150?random=2',
-        'https://picsum.photos/300/150?random=3',
+        // 'https://picsum.photos/300/150?random=1',
+        // 'https://picsum.photos/300/150?random=2',
+        // 'https://picsum.photos/300/150?random=3',
     ];
     console.log(photos)
 
-    if (photos.length > 0 )  {
+    //Fetch photos
+    // fetchPhotosByXHR(photosUrl)
+
+
+    if (photos.length > 0) {
         displayPhotos(photos)
     }
-    else    {
+    else {
         displayMessage('Brak zdjec', 'alert-danger')
     }
-    
+
+
+   
 
     // displayPhotos();
-    
-    
-    
+
+
+
     // setTimeout(function()   {
     //     displayMessage('Nie ma zdj w galerii', 'alert-danger')
 
     // }, 2 * ONE_SECOND);
- 
+
 }
 
 
