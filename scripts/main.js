@@ -12,14 +12,15 @@
 // photos.push( 'sernik' );
 // console.log (photos)
 
-function displayPhotos()    {
+// const photos = [
+//     // 'https://picsum.photos/300/150?random=1',
+//     // 'https://picsum.photos/300/150?random=2',
+//     // 'https://picsum.photos/300/150?random=3',
+// ];
+
+function displayPhotos(photos)    {
     console.log('displayPhotos()')
-    const photos = [
-        'https://picsum.photos/300/150?random=1',
-        'https://picsum.photos/300/150?random=2',
-        'https://picsum.photos/300/150?random=3',
-    ];
-    console.log(photos)
+    
 
     // renderPhoto(photos[0]);
     // renderPhoto(photos[1]);
@@ -46,6 +47,9 @@ function displayPhotos()    {
 
 }
 
+
+const ONE_SECOND = 1000
+
 function renderPhoto( url )  {
     console.log(url);
     const $photo = document.createElement('img');
@@ -53,13 +57,54 @@ function renderPhoto( url )  {
     const $main = document.querySelector('main');
     $main.appendChild($photo);
 }
+function displayMessage( alertOutside, outsideClass ){
+    const $text = document.createElement('p')
+    $text.textContent = alertOutside;
+    $text.classList.add('alert', outsideClass)
+;
+    const $main = document.querySelector('main')
+    $main.appendChild($text);
+}
+
+
+// function sleep()    {
+
+//    const start = Date.now();
+//    while (Date.now() > start + delay)   {}
+            
+//         console.log(i+1);
+//     }
+
 
 function main() {
     console.log('main()');
-    displayPhotos();
 
+    const photos = [
+        'https://picsum.photos/300/150?random=1',
+        'https://picsum.photos/300/150?random=2',
+        'https://picsum.photos/300/150?random=3',
+    ];
+    console.log(photos)
+
+    if (photos.length > 0 )  {
+        displayPhotos(photos)
+    }
+    else    {
+        displayMessage('Brak zdjec', 'alert-danger')
+    }
+    
+
+    // displayPhotos();
+    
+    
+    
+    // setTimeout(function()   {
+    //     displayMessage('Nie ma zdj w galerii', 'alert-danger')
+
+    // }, 2 * ONE_SECOND);
  
 }
+
 
 console.log(1)
 window.addEventListener('DOMContentLoaded', main);
