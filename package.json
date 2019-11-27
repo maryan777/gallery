@@ -1,0 +1,19 @@
+{
+  "name": "Szkolenie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server",
+    "build": "webpack",
+    "watch": "webpack -w"
+  },
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.1"
+  }
+}

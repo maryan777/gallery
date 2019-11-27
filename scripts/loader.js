@@ -13,3 +13,5 @@ const loader = {
         $mufinka.remove();
     }
 }
+
+module.exports = loader;
