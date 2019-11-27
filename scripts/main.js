@@ -36,6 +36,7 @@
 //     $text.classList.add('alert', outsideClass)
 
 async function main() {
+    // eslint-disable-next-line no-undef
     loader.show();
 
     function makeRequest(url) {    

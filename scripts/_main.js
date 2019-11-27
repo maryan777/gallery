@@ -97,7 +97,7 @@ function fetchPhotos(url)   {
        return fetch(url, options)
         .then(function (result)   {
             console.log ('udalo sie');
-            return result.json();;
+            return result.json();
 
         }) 
        
