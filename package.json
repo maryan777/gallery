@@ -9,7 +9,7 @@
     "watch": "webpack -w"
   },
   "dependencies": {
-    "http-server": "^0.11.1",
+    "http-server": "^0.11.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
